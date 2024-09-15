@@ -8,6 +8,7 @@ export class MonkeypoxCaseRoutes {
     const monkeypoxCaseController = new MonkeypoxCaseController();
 
     router.get('', monkeypoxCaseController.getMonkeypoxCases);
+    router.get('/recent', monkeypoxCaseController.getRecentMonkeypoxCases);
     router.get('/:id', monkeypoxCaseController.getMonkeypoxCaseById);
     router.post('', monkeypoxCaseController.createMonkeypoxCase);
     router.put('/:id', monkeypoxCaseController.updateMonkeypoxCase);

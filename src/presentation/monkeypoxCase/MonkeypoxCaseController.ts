@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { MonkeypoxCaseModel } from '../../data/models/MonkeypoxCaseModel';
+import { subDays } from 'date-fns';
 
 export class MonkeypoxCaseController {
   
@@ -10,7 +11,21 @@ export class MonkeypoxCaseController {
     } catch (error) {
       console.error(`Error -> ${error}`);
     }
-  }
+  };
+
+  public getRecentMonkeypoxCases = async (req: Request, res: Response) => {
+    try {
+      const sevenDaysAgo = subDays(new Date(), 7);
+
+      const recentMonkeypoxCases = await MonkeypoxCaseModel.find({
+        creationDate: { $gte: sevenDaysAgo }
+      });
+
+      res.json(recentMonkeypoxCases);
+    } catch (error) {
+      console.error(`Error -> ${error}`);
+    }
+  };
 
   public createMonkeypoxCase = async (req: Request, res: Response) => {    
     try {
@@ -26,7 +41,7 @@ export class MonkeypoxCaseController {
     } catch (error) {
       console.error(`Error -> ${error}`);
     }
-  }
+  };
 
   public getMonkeypoxCaseById = async (req: Request, res: Response) => {
 
@@ -38,7 +53,7 @@ export class MonkeypoxCaseController {
     } catch (error) {
       console.error(`Error -> ${error}`);
     }
-  }
+  };
 
   public updateMonkeypoxCase = async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -55,7 +70,7 @@ export class MonkeypoxCaseController {
     } catch (error) {
       console.error(`Error -> ${error}`);
     }
-  }
+  };
 
   public deleteMonkeypoxCase = async (req: Request, res: Response) => {
 
@@ -67,5 +82,5 @@ export class MonkeypoxCaseController {
     } catch (error) {
       console.error(`Error -> ${error}`);
     }
-  }
+  };
 }
