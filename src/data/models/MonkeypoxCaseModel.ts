@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const illnessCaseSchema = new mongoose.Schema({
+const monkeypoxCaseSchema = new mongoose.Schema({
   genre: {
     type: String,
     enum: ['M', 'F'],
@@ -29,4 +29,4 @@ const illnessCaseSchema = new mongoose.Schema({
   }
 });
 
-export const IllnessCaseModel = mongoose.model('IllnessCase', illnessCaseSchema);
+export const MonkeypoxCaseModel = mongoose.model('Monkeypox', monkeypoxCaseSchema);

@@ -1,6 +1,6 @@
 import { envs } from "../../config/envs";
 
-export function generateIllnessCaseEmailTemplate(genre: string, age: number, lat: number, lng: number): string {
+export function generateMonkeypoxCaseEmailTemplate(genre: string, age: number, lat: number, lng: number): string {
   
   const mapImageUrl = generateMapboxStaticImageURL(lat, lng);
   

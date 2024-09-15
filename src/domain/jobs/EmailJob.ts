@@ -1,12 +1,12 @@
 import cron from 'node-cron';
-import { IllnessCaseModel } from '../../data/models/IllnessCaseModel';
+import { MonkeypoxCaseModel } from '../../data/models/MonkeypoxCaseModel';
 import { EmailService } from '../services/EmailService';
-import { IllnessCaseDataSource } from '../datasources/IllnessCaseDataSource';
-import { generateIllnessCaseEmailTemplate } from '../templates/EmailTemplate';
+import { MonkeypoxCaseDataSource } from '../datasources/MonkeypoxCaseDataSource';
+import { generateMonkeypoxCaseEmailTemplate } from '../templates/EmailTemplate';
 
 export const emailJob = () => {
   const emailService = new EmailService();
-  const illnessCaseDataSource = new IllnessCaseDataSource();
+  const monkeypoxCaseDataSource = new MonkeypoxCaseDataSource();
 
   cron.schedule('*/10 * * * * *', async () => {
 
@@ -14,22 +14,22 @@ export const emailJob = () => {
 
     try {
 
-      const illnessCases = await IllnessCaseModel.find({ isEmailSent: false });
+      const monkeypoxCases = await MonkeypoxCaseModel.find({ isEmailSent: false });
 
-      if (!illnessCases.length){
+      if (!monkeypoxCases.length){
         console.log('No illness cases to report');
         return;
       }
 
-      console.log(`Proccesing ${illnessCases.length} illnessCases.`);
+      console.log(`Proccesing ${monkeypoxCases.length} monkeypoxCases.`);
 
       await Promise.all(
-        illnessCases.map(async (illnessCase)=>{
-          const htmlBody = generateIllnessCaseEmailTemplate(
-            illnessCase.genre,
-            illnessCase.age,
-            illnessCase.lat,
-            illnessCase.lng
+        monkeypoxCases.map(async (monkeypoxCase)=>{
+          const htmlBody = generateMonkeypoxCaseEmailTemplate(
+            monkeypoxCase.genre,
+            monkeypoxCase.age,
+            monkeypoxCase.lat,
+            monkeypoxCase.lng
           )
 
           await emailService.sendEmail({
@@ -37,10 +37,10 @@ export const emailJob = () => {
             subject: `New Monkeypox case`,
             htmlBody: htmlBody
           });
-          console.log(`Email sent for illnessCase [${illnessCase.id}]`);
+          console.log(`Email sent for monkeypoxCase [${monkeypoxCase.id}]`);
 
-          await illnessCaseDataSource.updateIncident(illnessCase._id.toString(), {...illnessCase, isEmailSent: true});
-          console.log(`Incident updated for ID [${illnessCase._id}]`);
+          await monkeypoxCaseDataSource.updateIncident(monkeypoxCase._id.toString(), {...monkeypoxCase, isEmailSent: true});
+          console.log(`Incident updated for ID [${monkeypoxCase._id}]`);
         })
       );
 

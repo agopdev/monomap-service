@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { IllnessCaseRoutes } from './illnessCase/IllnessCaseRoutes';
+import { MonkeypoxCaseRoutes } from './monkeypoxCase/MonkeypoxCaseRoutes';
 
 export class AppRoutes {
 
   static get routes() : Router {
     const router = Router()
-    router.use('/api/illness-cases', IllnessCaseRoutes.routes);
+    router.use('/api/illness-cases', MonkeypoxCaseRoutes.routes);
     
     return router;
   }
