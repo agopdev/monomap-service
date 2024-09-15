@@ -5,7 +5,7 @@ export class AppRoutes {
 
   static get routes() : Router {
     const router = Router()
-    router.use('/api/illnessCases', IllnessCaseRoutes.routes);
+    router.use('/api/illness-cases', IllnessCaseRoutes.routes);
     
     return router;
   }
