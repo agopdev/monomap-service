@@ -5,7 +5,7 @@ export class AppRoutes {
 
   static get routes() : Router {
     const router = Router()
-    router.use('/api/illness-cases', MonkeypoxCaseRoutes.routes);
+    router.use('/api/monkeypox-cases', MonkeypoxCaseRoutes.routes);
     
     return router;
   }
