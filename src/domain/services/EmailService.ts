@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { envs } from '../../config/envs';
+import { envs } from '../../_config/envs';
 
 interface MailOptions {
   to: string;

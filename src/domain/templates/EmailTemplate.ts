@@ -1,4 +1,4 @@
-import { envs } from '../../config/envs';
+import { envs } from '../../_config/envs';
 
 export function generateMonkeypoxCaseEmailTemplate(genre: string, age: number, lat: number, lng: number): string {
 
