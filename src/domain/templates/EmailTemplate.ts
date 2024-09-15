@@ -1,6 +1,11 @@
 import { envs } from "../../config/envs";
 
 export function generateMonkeypoxCaseEmailTemplate(genre: string, age: number, lat: number, lng: number): string {
+
+	enum Gender {
+		Male = 'Male',
+		Female = 'Female'
+	}
   
   const mapImageUrl = generateMapboxStaticImageURL(lat, lng);
   
@@ -10,7 +15,7 @@ export function generateMonkeypoxCaseEmailTemplate(genre: string, age: number, l
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Detalles del caso de enfermedad</title>
+      <title>Details of monkeypoxcase</title>
       <style>
           body {
               font-family: Arial, sans-serif;
@@ -62,17 +67,17 @@ export function generateMonkeypoxCaseEmailTemplate(genre: string, age: number, l
   <body>
       <div class="container">
           <div class="header">
-              <h1>Detalles del caso de enfermedad</h1>
+              <h1>Monkeypox cases details:</h1>
           </div>
           <div class="content">
-              <p><strong>Edad del afectado:</strong> ${ age }</p>
-              <p><strong>Sexo del afectado:</strong> ${ genre }</p>
-              <p><strong>Latitud:</strong> ${lat}</p>
-              <p><strong>Longitud:</strong> ${lng}</p>
+              <p><strong>Age of the affected person:</strong> ${ age }</p>
+              <p><strong>Sex of the affected person:</strong> ${ genre === 'F' ? Gender.Female : Gender.Male }</p>
+              <p><strong>Latitude:</strong> ${ lat }</p>
+              <p><strong>Longitude:</strong> ${ lng }</p>
               <img src="${ mapImageUrl }" class="map-image" />
           </div>
           <div class="footer">
-              <p>Este es un correo generado automáticamente. Por favor, no responda a este mensaje.</p>
+              <p>This is an auto-generated email. Please don't respond to this message.</p>
           </div>
       </div>
   </body>
