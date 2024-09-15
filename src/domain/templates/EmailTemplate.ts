@@ -67,7 +67,7 @@ export function generateMonkeypoxCaseEmailTemplate(genre: string, age: number, l
   <body>
       <div class="container">
           <div class="header">
-              <h1>Monkeypox cases details:</h1>
+              <h1>Monkeypox case details:</h1>
           </div>
           <div class="content">
               <p><strong>Age of the affected person:</strong> ${ age }</p>
