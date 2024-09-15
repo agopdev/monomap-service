@@ -1,12 +1,12 @@
 {
   "name": "monomap-service",
   "version": "1.0.0",
-  "description": "An API REST develop with express that allows to register and manage the monkeypox cases in México.",
+  "description": "An API REST developed with express that allows to register and manage the monkeypox cases in México.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.ts",
-    "build": "rimraf dist && tsc"
+    "start": "nodemon ./src/app.ts",
+    "build": "rimraf ./dist && tsc"
   },
   "keywords": [],
   "author": "",
