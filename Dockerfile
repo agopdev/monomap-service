@@ -6,6 +6,8 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+RUN ls -R /app | grep -v 'node_modules'
+
 RUN npm run build
 
 EXPOSE 3000
