@@ -1,6 +1,6 @@
 import express from 'express';
 import { MongoDatabase } from './data/MongoDatabase';
-import { envs } from './_config/envs';
+import { envs } from './config/envs';
 import { AppRoutes } from './presentation/AppRoutes';
 import { emailJob } from './domain/jobs/EmailJob';
 
