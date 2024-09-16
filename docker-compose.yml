@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   monomap-service:
-    image: agopdev/monomap-service-latest
+    image: agopdev/monomap-service:latest
     container_name: monomap-service
     environment:
       PORT: 3000
@@ -14,8 +14,8 @@ services:
       MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN}
     ports:
       - "3000:3000"
-  depends_on:
-    - mongo
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo
